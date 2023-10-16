@@ -1,12 +1,14 @@
 import re
 
+# Словник для транслітерації кирилічних символів в латиницю
 CYRILLIC_SYMBOLS = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюяєіїґ'
 TRANSLATION = ("a", "b", "v", "g", "d", "e", "e", "j", "z", "i", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u",
              "f", "h", "ts", "ch", "sh", "sch", "", "y", "", "e", "yu", "u", "ja", "je", "ji", "g")
 
+# Створюємо словник для транслітерації
 TRANS = dict()
 
-# Створюємо словник для транслітерації кирилічних символів у латиницю
+# Наповнюємо словник транслітерації
 for cyrillic, latin in zip(CYRILLIC_SYMBOLS, TRANSLATION):
     TRANS[ord(cyrillic)] = latin
     TRANS[ord(cyrillic.upper())] = latin.upper()
