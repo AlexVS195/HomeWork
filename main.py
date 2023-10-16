@@ -8,7 +8,8 @@ def handle_media(file_name: Path, target_folder: Path):
     # Обробляємо медіа-файли: створюємо папку та перейменовуємо файл
     target_folder.mkdir(exist_ok=True, parents=True)
     file_name.replace(target_folder / normalize(file_name.name))
-
+    print(target_folder)
+    
 def handle_archive(file_name: Path, target_folder: Path):
     # Обробляємо архіви: розпаковуємо та організовуємо файли
     target_folder.mkdir(exist_ok=True, parents=True)
@@ -44,3 +45,8 @@ def main(folder: Path):
             folder.rmdir()
         except OSError:
             print(f'Error during remove folder {folder}')
+
+
+if __name__ == "__main__":
+    folder_process = Path(sys.argv[1])  # Отримуємо шлях до папки з аргументів командного рядка
+    main(folder_process.resolve())  # Викликаємо головну функцію для обробки папки
